@@ -5,6 +5,8 @@ import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
 
+import TabModel from "./TabModel";
+
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
 
@@ -369,6 +371,13 @@ function App() {
             )}
             <s.SpacerMedium />
           </s.Container>
+
+          <TabModel
+            style={{
+              borderBottomLeftRadius: 50,
+            }}
+          />
+
           <s.SpacerLarge />
           <s.Container flex={1} jc={"center"} ai={"center"}>
             <StyledImg
