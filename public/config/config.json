@@ -1,11 +1,17 @@
 {
-  "CONTRACT_ADDRESS": "0xc51c2177a4b4B85bC191a7637e850F3165faa6e4",
-  "SCAN_LINK": "https://explorer.emerald.oasis.dev/token/0xc51c2177a4b4B85bC191a7637e850F3165faa6e4/",
-  "NETWORK": {
-    "NAME": "Emerald",
-    "SYMBOL": "ROSE",
-    "ID": 42262
+  "CONTRACT_ADDRESS": "0x827acb09a2dc20e39c9aad7f7190d9bc53534192",
+  "SCAN_LINK": "https://polygonscan.com/token/0x827acb09a2dc20e39c9aad7f7190d9bc53534192","NETWORK": {
+    "NAME": "Polygon",
+    "SYMBOL": "Matic",
+    "ID": 137
   },
+  "NFT_NAME": "Nerdy Coder Clones",
+  "SYMBOL": "NCC",
+  "MAX_SUPPLY": 1000,
+  "WEI_COST": 75000000000000000,
+  "DISPLAY_COST": 0.075,
   "GAS_LIMIT": 285000,
+  "MARKETPLACE": "Opeansea",
+  "MARKETPLACE_LINK": "https://opensea.io/collection/nerdy-coder-clones",
   "SHOW_BACKGROUND": true
 }

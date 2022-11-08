@@ -108,6 +108,34 @@ function TabGroup() {
     },
   ];
 
+  const claimNFTs = () => {
+    let cost = CONFIG.WEI_COST;
+    let gasLimit = CONFIG.GAS_LIMIT;
+    let totalCostWei = String(cost * mintAmount);
+    let totalGasLimit = String(gasLimit * mintAmount);
+    console.log("Cost: ", totalCostWei);
+    console.log("Gas limit: ", totalGasLimit);
+    setClaimingNft(true);
+    blockchain.smartContract.methods
+      .mint(blockchain.address, mintAmount)
+      .send({
+        gasLimit: String(totalGasLimit),
+        to: CONFIG.CONTRACT_ADDRESS,
+        from: blockchain.account,
+        value: totalCostWei,
+      })
+      .once("error", (err) => {
+        console.log(err);
+        setClaimingNft(false);
+      })
+      .then((receipt) => {
+        console.log(receipt);
+
+        setClaimingNft(false);
+        dispatch(fetchData(blockchain.account));
+      });
+  };
+
   return (
     <>
       <s.Container
@@ -244,7 +272,7 @@ function TabGroup() {
                   e.preventDefault();
                   console.log("KOH: " + depositValue);
 
-                  //claimNFTs();
+                  claimNFTs();
                   getData();
                 }}
               >
