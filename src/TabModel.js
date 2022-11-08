@@ -4,6 +4,8 @@ import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
 
 function TabGroup() {
   const depositString = "Deposit";
@@ -14,6 +16,7 @@ function TabGroup() {
   const [claimingNft, setClaimingNft] = useState(false);
   const blockchain = useSelector((state) => state.blockchain);
   const [mintAmount, setMintAmount] = useState(1);
+  const [depositValue, setDepositValue] = useState(10);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
@@ -25,6 +28,18 @@ function TabGroup() {
     GAS_LIMIT: 0,
     SHOW_BACKGROUND: false,
   });
+
+  const handleDepositValueChange = (event, newValue) => {
+    if (newValue == 20) {
+      setDepositValue(10);
+    } else if (newValue == 40) {
+      setDepositValue(100);
+    } else if (newValue == 60) {
+      setDepositValue(1000);
+    } else if (newValue == 80) {
+      setDepositValue(10000);
+    }
+  };
 
   const getData = () => {
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
@@ -49,6 +64,49 @@ function TabGroup() {
   useEffect(() => {
     getData();
   }, [blockchain.account]);
+
+  const marks = [
+    {
+      value: 20,
+      label: (
+        <>
+          10
+          <br />
+          $ROSE
+        </>
+      ),
+    },
+    {
+      value: 40,
+      label: (
+        <>
+          100
+          <br />
+          $ROSE
+        </>
+      ),
+    },
+    {
+      value: 60,
+      label: (
+        <>
+          1000
+          <br />
+          $ROSE
+        </>
+      ),
+    },
+    {
+      value: 80,
+      label: (
+        <>
+          10000
+          <br />
+          $ROSE
+        </>
+      ),
+    },
+  ];
 
   return (
     <>
@@ -134,7 +192,17 @@ function TabGroup() {
                 color: "var(--accent-text)",
               }}
             >
-              {"Working Correctly"}
+              {"Working Correctly: \n" + blockchain.account}
+
+              <Box>
+                <Slider
+                  aria-label="Custom marks"
+                  defaultValue={20}
+                  marks={marks}
+                  step={null}
+                  onChange={handleDepositValueChange}
+                />
+              </Box>
             </s.TextDescription>
             <s.SpacerMedium />
             <s.Container ai={"center"} jc={"center"} fd={"row"}>
@@ -174,6 +242,8 @@ function TabGroup() {
                 disabled={claimingNft ? 1 : 0}
                 onClick={(e) => {
                   e.preventDefault();
+                  console.log("KOH: " + depositValue);
+
                   //claimNFTs();
                   getData();
                 }}
