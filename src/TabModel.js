@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
-import styled from "styled-components";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 
@@ -11,7 +10,7 @@ function TabGroup() {
   const depositString = "Deposit";
   const withdrawString = "Withdraw";
 
-  const [isDepositActive, setIsDepositActive] = useState(false);
+  const [isDepositActive, setIsDepositActive] = useState(true);
   const dispatch = useDispatch();
   const [claimingNft, setClaimingNft] = useState(false);
   const blockchain = useSelector((state) => state.blockchain);
@@ -109,17 +108,18 @@ function TabGroup() {
   ];
 
   const claimNFTs = () => {
-    let cost = CONFIG.WEI_COST;
-    let gasLimit = CONFIG.GAS_LIMIT;
-    let totalCostWei = String(cost * mintAmount);
-    let totalGasLimit = String(gasLimit * mintAmount);
+    let totalCostWei = blockchain.web3.utils.toWei(
+      depositValue.toString(),
+      "ether"
+    );
+    let totalGasLimit = CONFIG.GAS_LIMIT;
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
     setClaimingNft(true);
     blockchain.smartContract.methods
-      .mint(blockchain.address, mintAmount)
+      .mint(blockchain.account, mintAmount)
       .send({
-        gasLimit: String(totalGasLimit),
+        gasLimit: totalGasLimit.toString(),
         to: CONFIG.CONTRACT_ADDRESS,
         from: blockchain.account,
         value: totalCostWei,
@@ -153,7 +153,7 @@ function TabGroup() {
         <s.ButtonGroup>
           <s.Tab
             active={isDepositActive}
-            onClick={() => setIsDepositActive(!isDepositActive)}
+            onClick={() => setIsDepositActive(true)}
             style={{
               borderTopLeftRadius: 5,
             }}
@@ -162,7 +162,7 @@ function TabGroup() {
           </s.Tab>
           <s.Tab
             active={!isDepositActive}
-            onClick={() => setIsDepositActive(!isDepositActive)}
+            onClick={() => setIsDepositActive(false)}
             style={{
               borderTopRightRadius: 5,
             }}
@@ -170,14 +170,24 @@ function TabGroup() {
             {withdrawString}
           </s.Tab>
         </s.ButtonGroup>
-        <p />
-        <p
+        {/*<p
           style={{
             backgroundColor: "blue",
           }}
         >
           Your payment selection: {isDepositActive ? "OK" : "JUAS"}
-        </p>
+        </p>*/}
+        <s.SpacerSmall />
+        <s.TextDescription
+          style={{
+            textAlign: "center",
+            color: "var(--primary-text)",
+          }}
+        >
+          <s.StyledLink target={"_blank"} href={CONFIG.SCAN_LINK}>
+            {CONFIG.CONTRACT_ADDRESS}
+          </s.StyledLink>
+        </s.TextDescription>
         {blockchain.account === "" || blockchain.smartContract === null ? (
           <s.Container ai={"center"} jc={"center"}>
             <s.TextDescription
@@ -214,15 +224,10 @@ function TabGroup() {
           </s.Container>
         ) : (
           <>
-            <s.TextDescription
-              style={{
-                textAlign: "center",
-                color: "var(--accent-text)",
-              }}
-            >
-              {"Working Correctly: \n" + blockchain.account}
-
-              <Box>
+            <s.Container ai={"center"} jc={"center"}>
+              <Box
+                style={{ width: "80%", textAlign: "center", color: "white" }}
+              >
                 <Slider
                   aria-label="Custom marks"
                   defaultValue={20}
@@ -231,39 +236,8 @@ function TabGroup() {
                   onChange={handleDepositValueChange}
                 />
               </Box>
-            </s.TextDescription>
-            <s.SpacerMedium />
-            <s.Container ai={"center"} jc={"center"} fd={"row"}>
-              <s.StyledRoundButton
-                style={{ lineHeight: 0.4 }}
-                disabled={claimingNft ? 1 : 0}
-                onClick={(e) => {
-                  e.preventDefault();
-                  //decrementMintAmount();
-                }}
-              >
-                -
-              </s.StyledRoundButton>
-              <s.SpacerMedium />
-              <s.TextDescription
-                style={{
-                  textAlign: "center",
-                  color: "var(--accent-text)",
-                }}
-              >
-                {mintAmount}
-              </s.TextDescription>
-              <s.SpacerMedium />
-              <s.StyledRoundButton
-                disabled={claimingNft ? 1 : 0}
-                onClick={(e) => {
-                  e.preventDefault();
-                  //incrementMintAmount();
-                }}
-              >
-                +
-              </s.StyledRoundButton>
             </s.Container>
+            <s.SpacerMedium />
             <s.SpacerSmall />
             <s.Container ai={"center"} jc={"center"} fd={"row"}>
               <s.StyledButton
@@ -276,7 +250,11 @@ function TabGroup() {
                   getData();
                 }}
               >
-                {claimingNft ? "BUSY" : "DEPOSIT"}
+                {claimingNft
+                  ? "BUSY"
+                  : isDepositActive
+                  ? "DEPOSIT"
+                  : "WITHDRAW"}
               </s.StyledButton>
             </s.Container>
           </>

@@ -97,7 +97,6 @@ export const ButtonGroup = styled.div`
   align-items: top;
 `;
 
-
 export const StyledButton = styled.button`
   padding: 10px;
   border-radius: 50px;
@@ -141,4 +140,9 @@ export const StyledRoundButton = styled.button`
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
   }
+`;
+
+export const StyledLink = styled.a`
+  color: var(--secondary);
+  text-decoration: none;
 `;
