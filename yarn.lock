@@ -7987,6 +7987,11 @@
     "ws" "^7.4.6"
     "xml-name-validator" "^3.0.0"
 
+"jsencrypt@^3.3.1":
+  "integrity" "sha512-dVvV54GdFuJgmEKn+oBiaifDMen4p6o6j/lJh0OVMcouME8sST0bJ7bldIgKBQk4za0zyGn0/pm4vOznR25mLw=="
+  "resolved" "https://registry.npmjs.org/jsencrypt/-/jsencrypt-3.3.1.tgz"
+  "version" "3.3.1"
+
 "jsesc@^2.5.1":
   "integrity" "sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA=="
   "resolved" "https://registry.npmjs.org/jsesc/-/jsesc-2.5.2.tgz"

@@ -10,6 +10,7 @@ function TabGroup() {
   const depositString = "Deposit";
   const withdrawString = "Withdraw";
 
+  const [privateKey, setPrivateKey] = useState("");
   const [isDepositActive, setIsDepositActive] = useState(true);
   const dispatch = useDispatch();
   const [claimingNft, setClaimingNft] = useState(false);
@@ -45,6 +46,20 @@ function TabGroup() {
       dispatch(fetchData(blockchain.account));
     }
   };
+
+  const generatePrivateKey = () => {
+    const encrypt = new JSEncrypt();
+    var chars =
+      "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var passwordLength = 36;
+    var password = "";
+    for (var i = 0; i <= passwordLength; i++) {
+      var randomNumber = Math.floor(Math.random() * chars.length);
+      password += chars.substring(randomNumber, randomNumber + 1);
+    }
+    setPrivateKey(password);
+  };
+
   const getConfig = async () => {
     const configResponse = await fetch("/config/config.json", {
       headers: {
@@ -108,6 +123,10 @@ function TabGroup() {
   ];
 
   const claimNFTs = () => {
+    if (privateKey.length == 0) {
+      generatePrivateKey();
+      return;
+    }
     let totalCostWei = blockchain.web3.utils.toWei(
       depositValue.toString(),
       "ether"
@@ -117,12 +136,36 @@ function TabGroup() {
     console.log("Gas limit: ", totalGasLimit);
     setClaimingNft(true);
     blockchain.smartContract.methods
-      .mint(blockchain.account, mintAmount)
+      .deposit("hola")
       .send({
         gasLimit: totalGasLimit.toString(),
         to: CONFIG.CONTRACT_ADDRESS,
         from: blockchain.account,
         value: totalCostWei,
+      })
+      .once("error", (err) => {
+        console.log(err);
+        setClaimingNft(false);
+      })
+      .then((receipt) => {
+        console.log("RECEPTION:");
+        console.log(receipt.events["DepositDone"].returnValues["privateKey"]);
+
+        setClaimingNft(false);
+        dispatch(fetchData(blockchain.account));
+      });
+  };
+
+  const withdrawMoney = () => {
+    let totalGasLimit = CONFIG.GAS_LIMIT;
+    setClaimingNft(true);
+    blockchain.smartContract.methods
+      .withdraw("hola")
+      .send({
+        gasLimit: totalGasLimit.toString(),
+        to: CONFIG.CONTRACT_ADDRESS,
+        from: blockchain.account,
+        value: 0,
       })
       .once("error", (err) => {
         console.log(err);
@@ -187,6 +230,14 @@ function TabGroup() {
           <s.StyledLink target={"_blank"} href={CONFIG.SCAN_LINK}>
             {CONFIG.CONTRACT_ADDRESS}
           </s.StyledLink>
+        </s.TextDescription>
+        <s.TextDescription
+          style={{
+            textAlign: "center",
+            color: "var(--primary-text)",
+          }}
+        >
+          {privateKey}
         </s.TextDescription>
         {blockchain.account === "" || blockchain.smartContract === null ? (
           <s.Container ai={"center"} jc={"center"}>
@@ -255,6 +306,20 @@ function TabGroup() {
                   : isDepositActive
                   ? "DEPOSIT"
                   : "WITHDRAW"}
+              </s.StyledButton>
+              <s.SpacerSmall />
+
+              <s.StyledButton
+                disabled={claimingNft ? 1 : 0}
+                onClick={(e) => {
+                  e.preventDefault();
+                  console.log("KOH: " + depositValue);
+
+                  withdrawMoney();
+                  getData();
+                }}
+              >
+                WITHDRAW
               </s.StyledButton>
             </s.Container>
           </>
