@@ -5,6 +5,20 @@ import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
+import Modal from '@mui/material/Modal';
+import Typography from '@mui/material/Typography';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 function TabGroup() {
   const depositString = "Deposit";
@@ -17,6 +31,11 @@ function TabGroup() {
   const blockchain = useSelector((state) => state.blockchain);
   const [mintAmount, setMintAmount] = useState(1);
   const [depositValue, setDepositValue] = useState(10);
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
     SCAN_LINK: "",
@@ -251,11 +270,8 @@ function TabGroup() {
             </s.TextDescription>
             <s.SpacerSmall />
             <s.StyledButton
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(connect());
-                getData();
-              }}
+              onClick={handleOpen
+              }
             >
               CONNECT
             </s.StyledButton>
@@ -304,8 +320,8 @@ function TabGroup() {
                 {claimingNft
                   ? "BUSY"
                   : isDepositActive
-                  ? "DEPOSIT"
-                  : "WITHDRAW"}
+                    ? "DEPOSIT"
+                    : "WITHDRAW"}
               </s.StyledButton>
               <s.SpacerSmall />
 
@@ -325,6 +341,27 @@ function TabGroup() {
           </>
         )}
       </s.Container>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+          <s.SpacerMedium />
+          <s.StyledButton
+            onClick={handleClose}
+          >
+            CLOSE
+          </s.StyledButton>
+        </Box>
+      </Modal>
     </>
   );
 }
