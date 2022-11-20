@@ -5,17 +5,18 @@ import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import Modal from '@mui/material/Modal';
-import Typography from '@mui/material/Typography';
+import Modal from "@mui/material/Modal";
+import Typography from "@mui/material/Typography";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: "background.paper",
+  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
@@ -67,7 +68,6 @@ function TabGroup() {
   };
 
   const generatePrivateKey = () => {
-    const encrypt = new JSEncrypt();
     var chars =
       "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var passwordLength = 36;
@@ -77,6 +77,7 @@ function TabGroup() {
       password += chars.substring(randomNumber, randomNumber + 1);
     }
     setPrivateKey(password);
+    handleOpen(false);
   };
 
   const getConfig = async () => {
@@ -255,9 +256,7 @@ function TabGroup() {
             textAlign: "center",
             color: "var(--primary-text)",
           }}
-        >
-          {privateKey}
-        </s.TextDescription>
+        ></s.TextDescription>
         {blockchain.account === "" || blockchain.smartContract === null ? (
           <s.Container ai={"center"} jc={"center"}>
             <s.TextDescription
@@ -270,8 +269,12 @@ function TabGroup() {
             </s.TextDescription>
             <s.SpacerSmall />
             <s.StyledButton
-              onClick={handleOpen
-              }
+              /*onClick={handleOpen}*/
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(connect());
+                getData();
+              }}
             >
               CONNECT
             </s.StyledButton>
@@ -320,8 +323,8 @@ function TabGroup() {
                 {claimingNft
                   ? "BUSY"
                   : isDepositActive
-                    ? "DEPOSIT"
-                    : "WITHDRAW"}
+                  ? "DEPOSIT"
+                  : "WITHDRAW"}
               </s.StyledButton>
               <s.SpacerSmall />
 
@@ -352,14 +355,17 @@ function TabGroup() {
             Text in a modal
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            {privateKey}
+            <s.StyledButton
+              onClick={() => {
+                navigator.clipboard.writeText(privateKey);
+              }}
+            >
+              <ContentCopyIcon />
+            </s.StyledButton>
           </Typography>
           <s.SpacerMedium />
-          <s.StyledButton
-            onClick={handleClose}
-          >
-            CLOSE
-          </s.StyledButton>
+          <s.StyledButton onClick={handleClose}>CLOSE</s.StyledButton>
         </Box>
       </Modal>
     </>
