@@ -8,13 +8,14 @@ import Slider from "@mui/material/Slider";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { ResponsiveWrapper } from "./App";
 
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  maxWidth: 500,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -312,6 +313,7 @@ function TabGroup() {
             <s.Container ai={"center"} jc={"center"} fd={"row"}>
               <s.StyledButton
                 disabled={claimingNft ? 1 : 0}
+                hidden={!isDepositActive}
                 onClick={(e) => {
                   e.preventDefault();
                   console.log("KOH: " + depositValue);
@@ -320,16 +322,11 @@ function TabGroup() {
                   getData();
                 }}
               >
-                {claimingNft
-                  ? "BUSY"
-                  : isDepositActive
-                  ? "DEPOSIT"
-                  : "WITHDRAW"}
+                DEPOSIT
               </s.StyledButton>
-              <s.SpacerSmall />
-
               <s.StyledButton
                 disabled={claimingNft ? 1 : 0}
+                hidden={isDepositActive}
                 onClick={(e) => {
                   e.preventDefault();
                   console.log("KOH: " + depositValue);
@@ -351,21 +348,35 @@ function TabGroup() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
+          <Typography variant="h5">Your private key</Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {privateKey}
-            <s.StyledButton
-              onClick={() => {
-                navigator.clipboard.writeText(privateKey);
-              }}
-            >
-              <ContentCopyIcon />
-            </s.StyledButton>
+            <p>
+              Please backup your private key. In order to withdraw and get your
+              deposit back you will need.
+            </p>
+            <s.SpacerSmall />
+            <ResponsiveWrapper flex={1}>
+              <s.StyledLink
+                target={"_blank"}
+                href="#"
+                onClick={() => {
+                  navigator.clipboard.writeText(privateKey);
+                }}
+              >
+                {privateKey}
+              </s.StyledLink>
+              <s.SpacerSmall />
+              <s.StyledRoundButton
+                onClick={() => {
+                  navigator.clipboard.writeText(privateKey);
+                }}
+              >
+                <ContentCopyIcon style={{ color: "white" }} />
+              </s.StyledRoundButton>
+            </ResponsiveWrapper>
           </Typography>
           <s.SpacerMedium />
-          <s.StyledButton onClick={handleClose}>CLOSE</s.StyledButton>
+          <s.StyledButton onClick={handleClose}>DEPOSIT</s.StyledButton>
         </Box>
       </Modal>
     </>

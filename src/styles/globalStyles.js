@@ -119,15 +119,15 @@ export const StyledButton = styled.button`
 
 export const StyledRoundButton = styled.button`
   padding: 10px;
-  border-radius: 100%;
+  border-radius: 15%;
   border: none;
-  background-color: var(--primary);
+  background-color: var(--secondary);
   padding: 10px;
   font-weight: bold;
   font-size: 15px;
   color: var(--primary-text);
-  width: 30px;
-  height: 30px;
+  width: 33px;
+  height: 33px;
   cursor: pointer;
   display: flex;
   align-items: center;
