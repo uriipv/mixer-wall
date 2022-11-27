@@ -144,5 +144,5 @@ export const StyledRoundButton = styled.button`
 
 export const StyledLink = styled.a`
   color: var(--secondary);
-  text-decoration: none;
+  text-decoration: underline;
 `;
