@@ -88,7 +88,10 @@ function App() {
 
         <ResponsiveWrapper flex={1} style={{ padding: 24 }}>
           <s.Container flex={1} jc={"center"} ai={"center"}>
-            <StyledImg alt={"example"} src={"/config/images/example.gif"} />
+            <StyledImg
+              alt={"example"}
+              src={"/config/images/macintosh-duo.gif"}
+            />
           </s.Container>
           <s.SpacerLarge />
 
@@ -96,7 +99,10 @@ function App() {
 
           <s.SpacerLarge />
           <s.Container flex={1} jc={"center"} ai={"center"}>
-            <StyledImg alt={"example"} src={"/config/images/example.gif"} />
+            <StyledImg
+              alt={"example"}
+              src={"/config/images/macintosh-duo.gif"}
+            />
           </s.Container>
         </ResponsiveWrapper>
 

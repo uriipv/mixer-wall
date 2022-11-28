@@ -1,18 +1,5 @@
 [
 	{
-		"anonymous": false,
-		"inputs": [
-			{
-				"indexed": false,
-				"internalType": "string",
-				"name": "privateKey",
-				"type": "string"
-			}
-		],
-		"name": "DepositDone",
-		"type": "event"
-	},
-	{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -24,6 +11,19 @@
 		"outputs": [],
 		"stateMutability": "payable",
 		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "privateKey",
+				"type": "string"
+			}
+		],
+		"name": "DepositDone",
+		"type": "event"
 	},
 	{
 		"inputs": [
