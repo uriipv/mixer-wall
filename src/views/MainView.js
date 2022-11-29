@@ -23,10 +23,12 @@ function TabGroup({ config }) {
   const depositString = "Deposit";
   const withdrawString = "Withdraw";
 
+  const [validationDepositMessage, setValidationDepositMessage] = useState("");
+  const [validationWithdrawMessage, setValidationWithdrawMessage] =
+    useState("");
   const [privateKey, setPrivateKey] = useState("");
   const [isDepositActive, setIsDepositActive] = useState(true);
   const dispatch = useDispatch();
-  const [depositInProgress, setDepositInProgress] = useState(false);
   const blockchain = useSelector((state) => state.blockchain);
   const [depositValue, setDepositValue] = useState(10);
 
@@ -59,6 +61,7 @@ function TabGroup({ config }) {
     }
     setPrivateKey(password);
     handleOpen();
+    setValidationDepositMessage("");
   };
 
   const marks = [
@@ -112,9 +115,6 @@ function TabGroup({ config }) {
       "ether"
     );
     let totalGasLimit = config.GAS_LIMIT;
-    console.log("Cost: ", totalCostWei);
-    console.log("Gas limit: ", totalGasLimit);
-    setDepositInProgress(true);
     blockchain.smartContract.methods
       .deposit(privateKey)
       .send({
@@ -124,21 +124,19 @@ function TabGroup({ config }) {
         value: totalCostWei,
       })
       .once("error", (err) => {
-        console.log(err);
-        setDepositInProgress(false);
+        setValidationDepositMessage(
+          "There has been an error. Deposit could not be made"
+        );
       })
       .then((receipt) => {
-        console.log("RECEPTION:");
-        console.log(receipt.events["DepositDone"].returnValues["privateKey"]);
-
-        setDepositInProgress(false);
+        setValidationDepositMessage(
+          "Your deposit has been successfully completed"
+        );
       });
   };
 
   const withdrawMoney = () => {
-    console.log("Key: ", inputPrivateKey);
     let totalGasLimit = config.GAS_LIMIT;
-    setDepositInProgress(true);
     blockchain.smartContract.methods
       .withdraw(inputPrivateKey)
       .send({
@@ -148,13 +146,14 @@ function TabGroup({ config }) {
         value: 0,
       })
       .once("error", (err) => {
-        console.log(err);
-        setDepositInProgress(false);
+        setValidationWithdrawMessage(
+          "There has been an error. Withdraw could not be made"
+        );
       })
       .then((receipt) => {
-        console.log(receipt);
-
-        setDepositInProgress(false);
+        setValidationWithdrawMessage(
+          "Your withdraw has been successfully completed"
+        );
       });
   };
 
@@ -258,9 +257,16 @@ function TabGroup({ config }) {
                 </s.Container>
                 <s.SpacerMedium />
                 <s.SpacerSmall />
+                <s.TextDescription
+                  style={{
+                    textAlign: "center",
+                    color: "var(--primary-text)",
+                  }}
+                >
+                  {validationDepositMessage}
+                </s.TextDescription>
                 <s.Container ai={"center"} jc={"center"} fd={"row"}>
                   <s.StyledButton
-                    disabled={depositInProgress ? 1 : 0}
                     onClick={(e) => {
                       e.preventDefault();
                       generatePrivateKey();
@@ -301,9 +307,16 @@ function TabGroup({ config }) {
                 </s.Container>
                 <s.SpacerMedium />
                 <s.SpacerSmall />
+                <s.TextDescription
+                  style={{
+                    textAlign: "center",
+                    color: "var(--primary-text)",
+                  }}
+                >
+                  {validationWithdrawMessage}
+                </s.TextDescription>
                 <s.Container ai={"center"} jc={"center"} fd={"row"}>
                   <s.StyledButton
-                    disabled={depositInProgress ? 1 : 0}
                     onClick={(e) => {
                       e.preventDefault();
                       withdrawMoney();
