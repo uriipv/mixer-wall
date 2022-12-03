@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import TextField from "@mui/material/TextField";
 import DepositPopup from "./DepositPopup.js";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 function TabGroup({ config }) {
   const depositString = "Deposit";
@@ -113,12 +114,12 @@ function TabGroup({ config }) {
       })
       .once("error", (err) => {
         setValidationDepositMessage(
-          "There has been an error. Deposit could not be made"
+          "There has been an error. Deposit could not be made."
         );
       })
       .then((receipt) => {
         setValidationDepositMessage(
-          "Your deposit has been successfully completed"
+          "Your deposit has been successfully completed."
         );
       });
   };
@@ -135,12 +136,12 @@ function TabGroup({ config }) {
       })
       .once("error", (err) => {
         setValidationWithdrawMessage(
-          "There has been an error. Withdraw could not be made"
+          "There has been an error. Withdraw could not be made."
         );
       })
       .then((receipt) => {
         setValidationWithdrawMessage(
-          "Your withdraw has been successfully completed"
+          "Your withdraw has been successfully completed."
         );
       });
   };
@@ -159,7 +160,18 @@ function TabGroup({ config }) {
           boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
         }}
       >
-        <s.ButtonGroup>
+        <s.ButtonGroup
+          style={{
+            visibility:
+              blockchain.account === "" || blockchain.smartContract === null
+                ? "hidden"
+                : "visible",
+            height:
+              blockchain.account === "" || blockchain.smartContract === null
+                ? 0
+                : 44,
+          }}
+        >
           <s.Tab
             active={isDepositActive}
             onClick={() => setIsDepositActive(true)}

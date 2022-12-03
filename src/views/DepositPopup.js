@@ -31,7 +31,7 @@ function DepositPopup({ open, handleClose, privateKey, deposit }) {
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <p>
               Please backup your private key. In order to withdraw and get your
-              deposit back you will need.
+              deposit back you will need it.
             </p>
             <s.SpacerSmall />
             <s.ResponsiveWrapper flex={1}>
