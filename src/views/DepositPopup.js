@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import { ResponsiveWrapper } from "../App";
 
 const style = {
   position: "absolute",
@@ -35,7 +34,7 @@ function DepositPopup({ open, handleClose, privateKey, deposit }) {
               deposit back you will need.
             </p>
             <s.SpacerSmall />
-            <ResponsiveWrapper flex={1}>
+            <s.ResponsiveWrapper flex={1}>
               <s.StyledLink
                 target={"_blank"}
                 onClick={() => {
@@ -52,7 +51,7 @@ function DepositPopup({ open, handleClose, privateKey, deposit }) {
               >
                 <ContentCopyIcon style={{ color: "white" }} />
               </s.StyledRoundButton>
-            </ResponsiveWrapper>
+            </s.ResponsiveWrapper>
           </Typography>
           <s.SpacerMedium />
           <s.StyledButton onClick={deposit}>DEPOSIT</s.StyledButton>

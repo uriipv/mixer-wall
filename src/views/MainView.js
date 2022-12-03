@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "../redux/blockchain/blockchainActions";
 import * as s from "../styles/globalStyles";
@@ -6,18 +6,6 @@ import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import TextField from "@mui/material/TextField";
 import DepositPopup from "./DepositPopup.js";
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  maxWidth: 500,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
 
 function TabGroup({ config }) {
   const depositString = "Deposit";
