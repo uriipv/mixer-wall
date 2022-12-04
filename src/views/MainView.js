@@ -125,11 +125,10 @@ function TabGroup({ config }) {
   };
 
   const withdrawMoney = () => {
-    let totalGasLimit = config.GAS_LIMIT;
     blockchain.smartContract.methods
       .withdraw(inputPrivateKey)
       .send({
-        gasLimit: totalGasLimit.toString(),
+        gasLimit: config.GAS_LIMIT.toString(),
         to: config.CONTRACT_ADDRESS,
         from: blockchain.account,
         value: 0,
