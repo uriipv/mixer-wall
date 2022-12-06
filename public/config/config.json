@@ -1,10 +1,10 @@
 {
-  "CONTRACT_ADDRESS": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
-  "SCAN_LINK": "https://polygonscan.com/token/0x827acb09a2dc20e39c9aad7f7190d9bc53534192",
+  "CONTRACT_ADDRESS": "0x5C305ec92E752Dc29df56EA19cdD662A7BB1053b",
+  "SCAN_LINK": "https://testnet.explorer.emerald.oasis.dev/address/0x5C305ec92E752Dc29df56EA19cdD662A7BB1053b",
   "NETWORK": {
-    "NAME": "Localhost",
-    "SYMBOL": "ETH",
-    "ID": 31337
+    "NAME": "Emerald Testnet",
+    "SYMBOL": "ROSE",
+    "ID": 42261
   },
   "GAS_LIMIT": 285000,
   "SHOW_BACKGROUND": true
