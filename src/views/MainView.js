@@ -6,7 +6,6 @@ import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import TextField from "@mui/material/TextField";
 import DepositPopup from "./DepositPopup.js";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 function TabGroup({ config }) {
   const depositString = "Deposit";

@@ -1,7 +1,7 @@
 {
   "name": "oasis_wall",
   "version": "1.0.0",
-  "description": "Oasis Wall it is a student project to demonstrate how traceability can be broken.",
+  "description": "Oasis Wall it is a student project to demonstrate how traceability can be broken in blockchain.",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",

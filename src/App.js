@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import * as s from "./styles/globalStyles";
-import FooterView from "./views/FooterView";
 import MainView from "./views/MainView";
 
 function App() {
@@ -58,8 +57,6 @@ function App() {
         </s.ResponsiveWrapper>
 
         <s.SpacerMedium />
-
-        <FooterView config={CONFIG} />
       </s.Container>
     </s.Screen>
   );

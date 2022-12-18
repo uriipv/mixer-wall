@@ -29,10 +29,8 @@ function DepositPopup({ open, handleClose, privateKey, deposit }) {
         <Box sx={style}>
           <Typography variant="h5">Your private key</Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <p>
-              Please backup your private key. In order to withdraw and get your
-              deposit back you will need it.
-            </p>
+            Please backup your private key. In order to withdraw and get your
+            deposit back you will need it.
             <s.SpacerSmall />
             <s.ResponsiveWrapper flex={1}>
               <s.StyledLink
