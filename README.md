@@ -1,44 +1,42 @@
-# Breaking traceability
+# Mixer Wall - Breaking traceability
 
-Este repositorio dispone del código del trabajo de final de grado de Oriol Punyed Vilabella, del área de sistemas distribuidos.
+This repository has the code of my final degree project, from distributed systems area.
 
-Mixer Wall, es un proyecto que trata de demostrar como a pesar de la gran trazabilidad y transparencia que ofrece la blockchain, se puede llegar a romper la trazabilidad de una transacción, perdiendo a su la posibilidad de seguir su rastro.
+Mixer Wall, is a project that tries to demonstrate how despite the great traceability and transparency offered by the blockchain, it is possible to break the traceability of a transaction, losing the possibility to follow its trace.
 
-# Requerimientos
+# Requirements
 
-- Se requiere tener NodeJS instalado.
+- It is required to have NodeJS installed.
 
-IMPORTANTE: Este proyecto se ha realizado sobre la versión v18.12.0 de NodeJS y se ha probado en MacOS y en Windows, por lo que se recomienda tener instalada esta versión instalada: https://nodejs.org/download/release/v18.12.0/ y usar MacOS o Windows.
+IMPORTANT: This project is built on NodeJS version v18.12.0 and has been tested on MacOS and Windows, so it is recommended to have this version installed: https://nodejs.org/download/release/v18.12.0/ and use MacOS or Windows.
 
 # Instalación
 
-Para instalar en su máquina local el proyecto, debe clonar este mismo repositorio:
-https://gitlab.com/opunyed/breaking-traceability-tfg
+To install the project on your local machine, you must clone this same repository:
 
-Para clonar el proyecto, hay que acceder a la URL anterior (este mismo repositorio) y clicar en el botón azul de Clone, y seguidamente escoger si se desea clonar mediante HTTPS o SSH.
 
-En el paso anterior se asume que el usuario tiene los conocimientos para clonar localmente un repositorio, de lo contrario, se recomienda seguir el siguiente tutorial oficial de GitLab: https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html
+In the previous step it is assumed that the user has the knowledge to clone a repository locally, otherwise, it is recommended to follow the following official GitHub tutorial: [https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 
-Una vez clonado el proyecto, procedemos a la instalación de las dependencias. Las dependencias que tiene el proyecto para poder arrancar, se encuentran en el archivo package.json.
+Once the project is cloned, we proceed to install the dependencies. The dependencies that the project has to be able to start, are in the package.json file.
 
-Para proceder a la instalación de todas estas dependencias, hay que situarse en la raíz del proyecto y lanzar el comando:
+To proceed with the installation of all these dependencies, we must go to the root of the project and launch the command:
 
 ```
 npm install
 ```
 
-Este comando realizará la instalación limpia de todas las dependencias del proyecto en la versión especificada tal y como se especifica en el archivo package.json. 
+This command will perform a clean installation of all project dependencies in the specified version as specified in the package.json file. 
 
-Esta instalación puede demorarse un rato, sin embargo, tan solo tendrá que realizarse una vez.
+This installation may take a while, however, it will only need to be performed once.
 
-# Uso
+# Usage
 
-Una vez se tiene todo instalado, tan solo queda levantar el servidor de desarrollo en local, para ello hay que lanzar el siguiente comando desde la raíz del proyecto:
+Once everything is installed, the only thing left to do is to start the development server locally, to do so, launch the following command from the root of the project:
 
 ```
 npm run start
 ```
 
-Ejecutado el comando anterior, el servidor se levantará por defecto en http://localhost:3000
+After executing the above command, the server will be up by default at http://localhost:3000.
 
-Con todos los pasos seguidos hasta aquí, el usuario ya dispone de todas las herramientas necesarias instaladas y con el servidor de desarrollo levantado para desarrollar las acciones deseadas al proyecto.
+With all the steps followed up to this point, the user already has all the necessary tools installed and the development server up to develop the desired actions for the project.
