@@ -1,56 +1,47 @@
 # Hardhat - Breaking traceability
 
-Este repositorio dispone del código del trabajo de final de grado de Oriol Punyed Vilabella, del área de sistemas distribuidos.
+This repository has the code of my final degree project, from distributed systems area.
 
-Para crear un entorno de pruebas donde poder tener tu nodo de blockchain en tu maquina local, se ha utilizado Hardhat. Con este framework podremos montar un entorno de desarrollo en local donde poder probar todos los cambios que hagamos al smart contract sin la necesidad de tener que desplegarlo en una red real.
+Mixer Wall, is a project that tries to demonstrate how despite the great traceability and transparency offered by the blockchain, it is possible to break the traceability of a transaction, losing the possibility to follow its trace.
 
 # Requerimientos
 
-- Se requiere tener NodeJS instalado.
+- It is required to have NodeJS installed.
 
-IMPORTANTE: Este proyecto se ha realizado sobre la versión v18.12.0 de NodeJS y se ha probado en MacOS y en Windows, por lo que se recomienda tener instalada esta versión instalada: https://nodejs.org/download/release/v18.12.0/ y usar MacOS o Windows.
+IMPORTANT: This project is built on NodeJS version v18.12.0 and has been tested on MacOS and Windows, so it is recommended to have this version installed: https://nodejs.org/download/release/v18.12.0/ and use MacOS or Windows.
 
 # Instalación
 
-Para instalar en su máquina local el proyecto, debe clonar este mismo repositorio:
-https://gitlab.com/opunyed/hardhat-tfg
-
-Para clonar el proyecto, hay que acceder a la URL anterior (este mismo repositorio) y clicar en el botón azul de Clone, y seguidamente escoger si se desea clonar mediante HTTPS o SSH.
-
-En el paso anterior se asume que el usuario tiene los conocimientos para clonar localmente un repositorio, de lo contrario, se recomienda seguir el siguiente tutorial oficial de GitLab: https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html
-
-Una vez descargado el proyecto, procedemos a la instalación de las dependencias. Las dependencias que tiene el proyecto para poder arrancar, se encuentran en el archivo package.json.
-
-Para proceder a la instalación de todas estas dependencias, hay que situarse en la raíz del proyecto y lanzar el comando:
+To install the project on your local machine, please, run the following command:
 
 ```
 npm install
 ```
 
-Este comando realizará la instalación limpia de todas las dependencias del proyecto en la versión especificada tal y como se especifica en el archivo package.json.
+This command will perform a clean installation of all project dependencies in the specified version as specified in the package.json file.
 
-Esta instalación puede demorarse un rato, sin embargo, tan solo tendrá que realizarse una vez.
+This installation may take a while, however, it will only need to be performed once.
 
-# Uso
+# Usage
 
-El próximo paso es levantar un servidor JSON-RPC sobre Hardhat Network, con esto se creará una blockchain en local, siendo nuestro ordenador un nodo el cual validará las transacciones. Para ello, hay que lanzar el comando:
+The next step is to set up a JSON-RPC server on Hardhat Network, this will create a blockchain locally, being our computer a node which will validate the transactions. To do this, we must launch the command:
 
 ```
 npx hardhat node
 ```
 
-Seguidamente, una vez levantado el nodo, ahora hay que desplegar el smart contract en la blockchain local. El smart contract se encuentra en la carpeta de contracts pero primero hay que compilarlo para seguidamente desplegarlo. Para ello hay que lanzar el comando:
+Next, once the node is up, the smart contract must now be deployed on the local blockchain. The smart contract is located in the contracts folder but first it must be compiled and then deployed. To do this, the command
 
 ```
 npx hardhat compile
 ```
 
-Una vez compilado, ahora hay que hacer el despliegue. Para ello Hardhat te facilita un script el cual solo hay que adaptar cual es el smart contract que deseas desplegar indicando el nombre del smart contract situado en la carpeta de contracts.
+Once compiled, now you have to deploy. To do this Hardhat provides you with a script which you just have to adapt which is the smart contract you want to deploy indicating the name of the smart contract located in the contracts folder.
 
-Seguidamente, ya teniendo el script apuntando al smart contract que deseamos publicar en la red, tan solo hay que lanzar el siguiente comando:
+Then, having the script pointing to the smart contract you want to publish on the network, you just have to launch the following command:
 
 ```
 npx hardhat run scripts/deploy.js --network localhost
 ```
 
-Con los pasos anteriores ya hemos montado el entorno de desarrollo y podríamos conectar el frontend a la red de localhost para así realizar las pruebas pertinentes o ejecutarlo en otra red si así se desea.
+With the previous steps we have already set up the development environment and we could connect the frontend to the localhost network to perform the relevant tests or run it on another network if desired.
