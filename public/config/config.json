@@ -1,10 +1,10 @@
 {
   "CONTRACT_ADDRESS": "0x5C305ec92E752Dc29df56EA19cdD662A7BB1053b",
-  "SCAN_LINK": "https://testnet.explorer.emerald.oasis.dev/address/0x5C305ec92E752Dc29df56EA19cdD662A7BB1053b",
+  "SCAN_LINK": "https://polygonscan.com/",
   "NETWORK": {
-    "NAME": "Emerald Testnet",
-    "SYMBOL": "ROSE",
-    "ID": 42261
+    "NAME": "Polygon Mainnet",
+    "SYMBOL": "MATIC",
+    "ID": 137
   },
   "GAS_LIMIT": 285000
 }

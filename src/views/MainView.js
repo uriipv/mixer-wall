@@ -198,9 +198,6 @@ function TabGroup({ config }) {
         >
           <s.StyledLink
             target={"_blank"}
-            href={
-              "https://testnet.explorer.emerald.oasis.dev/address/0x5C305ec92E752Dc29df56EA19cdD662A7BB1053b/"
-            }
           >
             {config.CONTRACT_ADDRESS}
           </s.StyledLink>

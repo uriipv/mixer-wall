@@ -2,7 +2,7 @@
 
 Este repositorio dispone del código del trabajo de final de grado de Oriol Punyed Vilabella, del área de sistemas distribuidos.
 
-Oasis Wall, es un proyecto que trata de demostrar como a pesar de la gran trazabilidad y transparencia que ofrece la blockchain, se puede llegar a romper la trazabilidad de una transacción, perdiendo a su la posibilidad de seguir su rastro.
+Mixer Wall, es un proyecto que trata de demostrar como a pesar de la gran trazabilidad y transparencia que ofrece la blockchain, se puede llegar a romper la trazabilidad de una transacción, perdiendo a su la posibilidad de seguir su rastro.
 
 # Requerimientos
 
