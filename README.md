@@ -13,7 +13,7 @@ IMPORTANT: This project is built on NodeJS version v18.12.0 and has been tested 
 # Instalación
 
 To install the project on your local machine, you must clone this same repository:
-
+https://github.com/uriipv/mixer-wall.git
 
 In the previous step it is assumed that the user has the knowledge to clone a repository locally, otherwise, it is recommended to follow the following official GitHub tutorial: [https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 
