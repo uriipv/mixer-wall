@@ -4,13 +4,13 @@ This repository has the code of my final degree project, from distributed system
 
 Mixer Wall, is a project that tries to demonstrate how despite the great traceability and transparency offered by the blockchain, it is possible to break the traceability of a transaction, losing the possibility to follow its trace.
 
-# Requerimientos
+# Requirements
 
 - It is required to have NodeJS installed.
 
 IMPORTANT: This project is built on NodeJS version v18.12.0 and has been tested on MacOS and Windows, so it is recommended to have this version installed: https://nodejs.org/download/release/v18.12.0/ and use MacOS or Windows.
 
-# Instalación
+# Instalation
 
 To install the project on your local machine, please, run the following command:
 
