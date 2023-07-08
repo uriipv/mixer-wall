@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import * as s from "./styles/globalStyles";
+import * as s from "./styles/styles";
 import MainView from "./views/MainView";
 
 function App() {
@@ -12,7 +12,6 @@ function App() {
       ID: 0,
     },
     GAS_LIMIT: 0,
-    SHOW_BACKGROUND: false,
   });
 
   const getConfig = async () => {
@@ -36,7 +35,7 @@ function App() {
         flex={1}
         ai={"center"}
         style={{ padding: 24, backgroundColor: "var(--primary)" }}
-        image={CONFIG.SHOW_BACKGROUND ? "/config/images/bg2.png" : null}
+        image="/config/images/bg2.png"
       >
         <s.StyledLogo alt={"logo"} src={"/config/images/logo.png"} />
 

@@ -1,5 +1,5 @@
 import React from "react";
-import * as s from "../styles/globalStyles";
+import * as s from "../styles/styles";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";

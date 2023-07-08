@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { connect } from "../redux/blockchain/blockchainActions";
-import * as s from "../styles/globalStyles";
+import { connect } from "../redux/BlockchainHelper";
+import * as s from "../styles/styles";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import TextField from "@mui/material/TextField";
@@ -196,7 +196,12 @@ function TabGroup({ config }) {
             color: "var(--primary-text)",
           }}
         >
-          <s.StyledLink target={"_blank"} href={""}>
+          <s.StyledLink
+            target={"_blank"}
+            href={
+              "https://testnet.explorer.emerald.oasis.dev/address/0x5C305ec92E752Dc29df56EA19cdD662A7BB1053b/"
+            }
+          >
             {config.CONTRACT_ADDRESS}
           </s.StyledLink>
         </s.TextDescription>

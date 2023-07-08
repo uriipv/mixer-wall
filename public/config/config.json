@@ -6,6 +6,5 @@
     "SYMBOL": "ROSE",
     "ID": 42261
   },
-  "GAS_LIMIT": 285000,
-  "SHOW_BACKGROUND": true
+  "GAS_LIMIT": 285000
 }
