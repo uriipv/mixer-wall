@@ -10,7 +10,7 @@ Mixer Wall, is a project that tries to demonstrate how despite the great traceab
 
 IMPORTANT: This project is built on NodeJS version v18.12.0 and has been tested on MacOS and Windows, so it is recommended to have this version installed: https://nodejs.org/download/release/v18.12.0/ and use MacOS or Windows.
 
-# Instalación
+# Installation
 
 To install the project on your local machine, you must clone this same repository:
 https://github.com/uriipv/mixer-wall.git
